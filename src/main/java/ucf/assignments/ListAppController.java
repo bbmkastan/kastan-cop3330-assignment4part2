@@ -9,12 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class ListAppController {
 
-    @FXML
-    private ListView<?> listOfItems;
+    public TableView listOfItems;
 
     @FXML
     private DatePicker dueDatePicker;

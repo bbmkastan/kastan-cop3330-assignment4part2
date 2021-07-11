@@ -1,0 +1,30 @@
+@startuml
+!define DARKBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+'https://plantuml.com/class-diagram
+
+class ListApp {
+    main(String[] args)
+    start(Stage primaryStage)
+}
+
+class ListAppController {
+- ListView<Item> listOfItems
+- DatePicker dueDatePicker
+- TextField itemDescriptionField
+
++ clearAllButtonClicked()
++ createNewItemButtonClicked()
++ helpButtonClicked()
++ openButtonClicked()
++ saveAsButtonClicked()
++ showAllButtonClicked()
++ showAllButtonClicked()
++ showOnlyCompletedButtonClicked()
++ showOnlyIncompletedButtonClicked()
++ toggleCompleteButtonClicked()
+}
+
+Application <|-- ListApp
+ListApp -- ListAppController
+@enduml
