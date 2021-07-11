@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
@@ -32,7 +31,7 @@ public class ListAppController implements Initializable {
 
     @FXML
     void clearAllButtonClicked(ActionEvent event) {
-
+        listOfItems.getItems().clear();
     }
 
     @FXML
