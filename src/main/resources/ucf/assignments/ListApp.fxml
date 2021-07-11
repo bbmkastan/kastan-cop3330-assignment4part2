@@ -39,11 +39,6 @@
       </Button>
       <DatePicker fx:id="dueDatePicker" layoutX="293.0" layoutY="360.0" promptText="Pick a Due Date..." AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="132.0" />
       <TextField fx:id="itemDescriptionField" layoutX="16.0" layoutY="360.0" prefHeight="26.0" prefWidth="266.0" promptText="Item Description (up to 256 charaters)..." AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="317.0" />
-      <Button layoutX="418.0" layoutY="14.0" mnemonicParsing="false" onAction="#toggleCompleteButtonClicked" style="-fx-background-color: #FCA311;" text="Complete/Incomplete" textFill="WHITE" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
       <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #FCA311;" text="File" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#openButtonClicked" text="Open..." />
@@ -57,7 +52,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </MenuButton>
-      <Button layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#toggleCompleteButtonClicked" style="-fx-background-color: #FCA311;" text="Delete Item" textFill="WHITE" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#DeleteButtonClicked" style="-fx-background-color: #FCA311;" text="Delete Item" textFill="WHITE" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

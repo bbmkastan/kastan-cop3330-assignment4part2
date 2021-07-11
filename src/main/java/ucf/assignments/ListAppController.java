@@ -35,8 +35,14 @@ public class ListAppController implements Initializable {
 
     @FXML
     void createNewItemButtonClicked(ActionEvent event) {
-        Item item = new Item(dueDatePicker.getValue().toString(), itemDescriptionField.getText());
-        listOfItems.getItems().add(item);
+        if (itemDescriptionField.getText().trim().length() >= 1 && itemDescriptionField.getText().trim().length() <= 256) {
+            Item item = new Item(dueDatePicker.getValue().toString(), itemDescriptionField.getText());
+            listOfItems.getItems().add(item);
+        }
+    }
+
+    public void DeleteButtonClicked(ActionEvent actionEvent) {
+        listOfItems.getItems().removeAll(listOfItems.getSelectionModel().getSelectedItems());
     }
 
     @FXML
@@ -66,11 +72,6 @@ public class ListAppController implements Initializable {
 
     @FXML
     void showOnlyIncompletedButtonClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void toggleCompleteButtonClicked(ActionEvent event) {
 
     }
 
