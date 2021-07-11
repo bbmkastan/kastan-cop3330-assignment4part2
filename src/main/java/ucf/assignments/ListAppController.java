@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -78,6 +80,9 @@ public class ListAppController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dueDatePicker.setValue(LocalDate.now());
+        
+        colDueDate.setCellFactory(TextFieldTableCell.forTableColumn());
+        colDescription.setCellFactory(TextFieldTableCell.forTableColumn());
 
         colCompleted.setCellValueFactory(new PropertyValueFactory<>("Completed"));
         colDueDate.setCellValueFactory(new PropertyValueFactory<>("DueDate"));
