@@ -1,16 +1,18 @@
 package ucf.assignments;
 
+import javafx.scene.control.CheckBox;
+
 import java.time.LocalDate;
 
 public class Item {
     private String description;
-    private LocalDate dueDate;
-    private boolean completed;
+    private String dueDate;
+    private CheckBox completed;
 
-    public Item(LocalDate dueDate, String description) {
+    public Item(String dueDate, String description) {
         this.description = description;
         this.dueDate = dueDate;
-        this.completed = false;
+        this.completed = new CheckBox();
     }
 
     public String getDescription() {
@@ -21,19 +23,19 @@ public class Item {
         this.description = description;
     }
 
-    public LocalDate getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public boolean isCompleted() {
+    public CheckBox isCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(CheckBox completed) {
         this.completed = completed;
     }
 }

@@ -7,14 +7,20 @@ package ucf.assignments;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class ListAppController {
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-    public TableView listOfItems;
+public class ListAppController implements Initializable {
+    public TableView<Item> listOfItems;
+
+    public TableColumn<Item, CheckBox> colCompleted;
+    public TableColumn<Item, String> colDueDate;
+    public TableColumn<Item, String> colDescription;
 
     @FXML
     private DatePicker dueDatePicker;
@@ -29,7 +35,8 @@ public class ListAppController {
 
     @FXML
     void createNewItemButtonClicked(ActionEvent event) {
-
+        Item item = new Item(dueDatePicker.getValue().toString(), itemDescriptionField.getText());
+        listOfItems.getItems().add(item);
     }
 
     @FXML
@@ -67,5 +74,13 @@ public class ListAppController {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        dueDatePicker.setValue(LocalDate.now());
+
+        colCompleted.setCellValueFactory(new PropertyValueFactory<>("Completed"));
+        colDueDate.setCellValueFactory(new PropertyValueFactory<>("DueDate"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
+    }
 }
 

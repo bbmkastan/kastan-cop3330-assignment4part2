@@ -15,11 +15,11 @@
    <children>
       <AnchorPane layoutY="53.0" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
          <children>
-            <TableView fx:id="listOfItems" editable="true" prefHeight="302.0" prefWidth="600.0" AnchorPane.bottomAnchor="-6.399999999999977" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="listOfItems" editable="true" prefHeight="302.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Done" />
-                <TableColumn prefWidth="303.99998474121094" text="Due Date" />
-                  <TableColumn prefWidth="75.0" text="Description" />
+                <TableColumn fx:id="colCompleted" maxWidth="73.0" minWidth="73.0" prefWidth="73.0" text="Completed" />
+                <TableColumn fx:id="colDueDate" maxWidth="153.0" minWidth="153.0" prefWidth="153.0" text="Due Date" />
+                  <TableColumn fx:id="colDescription" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="-1.0" text="Description" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
