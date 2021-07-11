@@ -9,22 +9,37 @@ class ListApp {
 }
 
 class ListAppController {
-- ListView<Item> listOfItems
-- DatePicker dueDatePicker
-- TextField itemDescriptionField
+    - TableView<Item> listOfItems
+    - DatePicker dueDatePicker
+    - TextField itemDescriptionField
 
-+ clearAllButtonClicked()
-+ createNewItemButtonClicked()
-+ helpButtonClicked()
-+ openButtonClicked()
-+ saveAsButtonClicked()
-+ showAllButtonClicked()
-+ showAllButtonClicked()
-+ showOnlyCompletedButtonClicked()
-+ showOnlyIncompletedButtonClicked()
-+ toggleCompleteButtonClicked()
+    + clearAllButtonClicked()
+    + createNewItemButtonClicked()
+    + helpButtonClicked()
+    + openButtonClicked()
+    + saveAsButtonClicked()
+    + showAllButtonClicked()
+    + showAllButtonClicked()
+    + showOnlyCompletedButtonClicked()
+    + showOnlyIncompleteButtonClicked()
+    + DeleteButtonClicked()
+}
+
+class Item {
+    - String description
+    - String dueDate
+    - CheckBox completed
+
+    + Item(String dueDate, String description)
+    + String getDescription()
+    + void setDescription(String description)
+    + String getDueDate()
+    + void setDueDate(String dueDate)
+    + CheckBox isCompleted()
+    + void setCompleted(CheckBox completed)
 }
 
 Application <|-- ListApp
 ListApp -- ListAppController
+ListAppController --* Item
 @enduml

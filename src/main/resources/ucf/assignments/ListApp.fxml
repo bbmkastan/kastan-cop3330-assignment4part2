@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListAppController">
    <children>
       <AnchorPane layoutY="53.0" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
@@ -46,7 +45,7 @@
             <MenuItem mnemonicParsing="false" onAction="#clearAllButtonClicked" text="Clear All" />
             <MenuItem mnemonicParsing="false" onAction="#showAllButtonClicked" text="Show All" />
             <MenuItem mnemonicParsing="false" onAction="#showOnlyCompletedButtonClicked" text="Show Only Completed" />
-            <MenuItem mnemonicParsing="false" onAction="#showOnlyIncompletedButtonClicked" text="Show Only Incompleted" />
+            <MenuItem mnemonicParsing="false" onAction="#showOnlyIncompleteButtonClicked" text="Show Only Incomplete" />
         </items>
          <font>
             <Font name="System Bold" size="12.0" />

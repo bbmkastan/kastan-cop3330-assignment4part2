@@ -5,6 +5,9 @@ package ucf.assignments;
  *  Copyright 2021 Bao Kastan
  */
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +26,8 @@ public class ListAppController implements Initializable {
     public TableColumn<Item, String> colDueDate;
     public TableColumn<Item, String> colDescription;
 
+    private ObservableList<Item> list = FXCollections.observableArrayList();
+
     @FXML
     private DatePicker dueDatePicker;
 
@@ -39,7 +44,9 @@ public class ListAppController implements Initializable {
         if (itemDescriptionField.getText().trim().length() >= 1 && itemDescriptionField.getText().trim().length() <= 256) {
             Item item = new Item(dueDatePicker.getValue().toString(), itemDescriptionField.getText());
             listOfItems.getItems().add(item);
+            list.add(item);
         }
+        refresh();
     }
 
     public void DeleteButtonClicked(ActionEvent actionEvent) {
@@ -63,23 +70,52 @@ public class ListAppController implements Initializable {
 
     @FXML
     void showAllButtonClicked(ActionEvent event) {
-
+        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
+        filteredData.setPredicate(null);
+        listOfItems.setItems(filteredData);
     }
 
     @FXML
     void showOnlyCompletedButtonClicked(ActionEvent event) {
+        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
 
+        filteredData.setPredicate(null);
+
+        filteredData.setPredicate(Item -> {
+            if (Item.isCompleted().isSelected()) {
+                return true;
+            }
+            return false;
+        });
+
+        listOfItems.setItems(filteredData);
     }
 
     @FXML
-    void showOnlyIncompletedButtonClicked(ActionEvent event) {
+    void showOnlyIncompleteButtonClicked(ActionEvent event) {
+        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
 
+        filteredData.setPredicate(null);
+
+        filteredData.setPredicate(Item -> {
+            if (!Item.isCompleted().isSelected()) {
+                return true;
+            }
+            return false;
+        });
+
+        listOfItems.setItems(filteredData);
+    }
+
+    private void refresh(){
+        dueDatePicker.setValue(LocalDate.now());
+        itemDescriptionField.setText(null);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dueDatePicker.setValue(LocalDate.now());
-        
+
         colDueDate.setCellFactory(TextFieldTableCell.forTableColumn());
         colDescription.setCellFactory(TextFieldTableCell.forTableColumn());
 
