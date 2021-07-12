@@ -14,12 +14,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
+import static java.lang.Boolean.parseBoolean;
 
 public class ListAppController implements Initializable {
+    FileChooser fileChooser = new FileChooser();
+
     public TableView<Item> listOfItems;
 
     public TableColumn<Item, CheckBox> colCompleted;
@@ -64,8 +74,20 @@ public class ListAppController implements Initializable {
     }
 
     @FXML
-    void openButtonClicked(ActionEvent event) {
+    void openButtonClicked(ActionEvent event) throws FileNotFoundException {
+        File file = fileChooser.showOpenDialog(new Stage());
 
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            String string = scanner.nextLine();
+            String[] parts = string.split(",");
+            Item item = new Item(parts[1],parts[2]);
+            CheckBox checkBox = new CheckBox();
+            checkBox.setSelected(parseBoolean(parts[0]));
+            item.setCompleted(checkBox);
+            list.add(item);
+            listOfItems.setItems(filteredData);
+        }
     }
 
     @FXML
@@ -114,6 +136,8 @@ public class ListAppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fileChooser.setInitialDirectory(new File("C:"));
+
         dueDatePicker.setValue(LocalDate.now());
 
         colDueDate.setCellFactory(TextFieldTableCell.forTableColumn());
