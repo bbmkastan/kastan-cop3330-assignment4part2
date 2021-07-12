@@ -27,6 +27,7 @@ public class ListAppController implements Initializable {
     public TableColumn<Item, String> colDescription;
 
     private ObservableList<Item> list = FXCollections.observableArrayList();
+    FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
 
     @FXML
     private DatePicker dueDatePicker;
@@ -36,21 +37,25 @@ public class ListAppController implements Initializable {
 
     @FXML
     void clearAllButtonClicked(ActionEvent event) {
-        listOfItems.getItems().clear();
+        list.clear();
+        listOfItems.setItems(filteredData);
     }
 
     @FXML
     void createNewItemButtonClicked(ActionEvent event) {
         if (itemDescriptionField.getText().trim().length() >= 1 && itemDescriptionField.getText().trim().length() <= 256) {
             Item item = new Item(dueDatePicker.getValue().toString(), itemDescriptionField.getText());
-            listOfItems.getItems().add(item);
             list.add(item);
+            listOfItems.setItems(filteredData);
         }
         refresh();
     }
 
     public void DeleteButtonClicked(ActionEvent actionEvent) {
-        listOfItems.getItems().removeAll(listOfItems.getSelectionModel().getSelectedItems());
+        int visibleIndex = listOfItems.getSelectionModel().getSelectedIndex();
+        list.remove(visibleIndex);
+        listOfItems.setItems(filteredData);
+
     }
 
     @FXML
@@ -70,15 +75,12 @@ public class ListAppController implements Initializable {
 
     @FXML
     void showAllButtonClicked(ActionEvent event) {
-        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
         filteredData.setPredicate(null);
         listOfItems.setItems(filteredData);
     }
 
     @FXML
     void showOnlyCompletedButtonClicked(ActionEvent event) {
-        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
-
         filteredData.setPredicate(null);
 
         filteredData.setPredicate(Item -> {
@@ -93,8 +95,6 @@ public class ListAppController implements Initializable {
 
     @FXML
     void showOnlyIncompleteButtonClicked(ActionEvent event) {
-        FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
-
         filteredData.setPredicate(null);
 
         filteredData.setPredicate(Item -> {
