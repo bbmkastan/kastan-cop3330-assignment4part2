@@ -17,8 +17,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -91,8 +90,13 @@ public class ListAppController implements Initializable {
     }
 
     @FXML
-    void saveAsButtonClicked(ActionEvent event) {
-
+    void saveAsButtonClicked(ActionEvent event) throws IOException {
+        File file = fileChooser.showSaveDialog(new Stage());
+        FileWriter writer = new FileWriter(file);
+        for (Item item : list) {
+            writer.write(Boolean.toString(item.isCompleted().isSelected()) + "," + item.getDueDate() + "," + item.getDescription()+"\n");
+        }
+        writer.close();
     }
 
     @FXML

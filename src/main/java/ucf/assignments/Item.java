@@ -1,5 +1,10 @@
 package ucf.assignments;
 
+/*
+ *  UCF COP3330 Summer 2021 Assignment 4 Solution
+ *  Copyright 2021 Bao Kastan
+ */
+
 import javafx.scene.control.CheckBox;
 
 import java.time.LocalDate;
