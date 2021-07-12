@@ -92,7 +92,7 @@ public class ListAppController implements Initializable {
     @FXML
     void saveAsButtonClicked(ActionEvent event) throws IOException {
         File file = fileChooser.showSaveDialog(new Stage());
-        FileWriter writer = new FileWriter(file);
+        FileWriter writer = new FileWriter(file + ".txt");
         for (Item item : list) {
             writer.write(Boolean.toString(item.isCompleted().isSelected()) + "," + item.getDueDate() + "," + item.getDescription()+"\n");
         }
