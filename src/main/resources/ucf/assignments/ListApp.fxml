@@ -10,51 +10,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListAppController">
-   <children>
-      <AnchorPane layoutY="53.0" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
-         <children>
-            <TableView fx:id="listOfItems" editable="true" prefHeight="302.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="colCompleted" maxWidth="73.0" minWidth="73.0" prefWidth="73.0" text="Completed" />
-                <TableColumn fx:id="colDueDate" maxWidth="153.0" minWidth="153.0" prefWidth="153.0" text="Due Date" />
-                  <TableColumn fx:id="colDescription" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="-1.0" text="Description" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <Button layoutX="475.0" layoutY="360.0" mnemonicParsing="false" onAction="#createNewItemButtonClicked" style="-fx-background-color: #FCA311;" text="Create New item" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="564.0" layoutY="14.0" mnemonicParsing="false" onAction="#helpButtonClicked" style="-fx-background-color: #FCA311;" text="?" textFill="WHITE" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <DatePicker fx:id="dueDatePicker" layoutX="293.0" layoutY="360.0" promptText="Pick a Due Date..." AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="132.0" />
-      <TextField fx:id="itemDescriptionField" layoutX="16.0" layoutY="360.0" prefHeight="26.0" prefWidth="266.0" promptText="Item Description (up to 256 charaters)..." AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="317.0" />
-      <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #FCA311;" text="File" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#openButtonClicked" text="Open..." />
-          <MenuItem mnemonicParsing="false" onAction="#saveAsButtonClicked" text="Save As..." />
-            <MenuItem mnemonicParsing="false" onAction="#clearAllButtonClicked" text="Clear All" />
-            <MenuItem mnemonicParsing="false" onAction="#showAllButtonClicked" text="Show All" />
-            <MenuItem mnemonicParsing="false" onAction="#showOnlyCompletedButtonClicked" text="Show Only Completed" />
-            <MenuItem mnemonicParsing="false" onAction="#showOnlyIncompleteButtonClicked" text="Show Only Incomplete" />
-        </items>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </MenuButton>
-      <Button layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#DeleteButtonClicked" style="-fx-background-color: #FCA311;" text="Delete Item" textFill="WHITE" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListAppController">
+    <AnchorPane layoutY="53.0" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;"
+                AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="52.0">
+        <TableView fx:id="listOfItems" editable="true" prefHeight="302.0" prefWidth="600.0"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="colCompleted" maxWidth="73.0" minWidth="73.0" prefWidth="73.0"
+                             text="Completed"/>
+                <TableColumn fx:id="colDueDate" maxWidth="153.0" minWidth="153.0" prefWidth="153.0"
+                             text="Due Date"/>
+                <TableColumn fx:id="colDescription" maxWidth="1.7976931348623157E308" minWidth="-Infinity"
+                             prefWidth="-1.0" text="Description"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </AnchorPane>
+    <Button layoutX="475.0" layoutY="360.0" mnemonicParsing="false" onAction="#createNewItemButtonClicked"
+            style="-fx-background-color: #FCA311;" text="Create New item" textFill="WHITE"
+            AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+        <font>
+          <Font name="System Bold" size="12.0"/>
+        </font>
+    </Button>
+    <DatePicker fx:id="dueDatePicker" layoutX="293.0" layoutY="360.0" promptText="Pick a Due Date..."
+                AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="132.0"/>
+    <TextField fx:id="itemDescriptionField" layoutX="16.0" layoutY="360.0" prefHeight="26.0" prefWidth="266.0"
+               promptText="Item Description (up to 256 charaters)..." AnchorPane.bottomAnchor="14.0"
+               AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="317.0"/>
+    <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #FCA311;" text="File"
+                textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <items>
+          <MenuItem mnemonicParsing="false" onAction="#openButtonClicked" text="Open..."/>
+          <MenuItem mnemonicParsing="false" onAction="#saveAsButtonClicked" text="Save As..."/>
+          <MenuItem mnemonicParsing="false" onAction="#clearAllButtonClicked" text="Clear All"/>
+          <MenuItem mnemonicParsing="false" onAction="#showAllButtonClicked" text="Show All"/>
+          <MenuItem mnemonicParsing="false" onAction="#showOnlyCompletedButtonClicked" text="Show Only Completed"/>
+          <MenuItem mnemonicParsing="false" onAction="#showOnlyIncompleteButtonClicked" text="Show Only Incomplete"/>
+      </items>
+        <font>
+          <Font name="System Bold" size="12.0"/>
+        </font>
+    </MenuButton>
+    <Button layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#DeleteButtonClicked"
+            style="-fx-background-color: #FCA311;" text="Delete Item" textFill="WHITE" AnchorPane.rightAnchor="14.0"
+            AnchorPane.topAnchor="14.0">
+        <font>
+          <Font name="System Bold" size="12.0"/>
+        </font>
+    </Button>
 </AnchorPane>

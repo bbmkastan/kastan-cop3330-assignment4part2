@@ -12,17 +12,20 @@ class ListAppController {
     - TableView<Item> listOfItems
     - DatePicker dueDatePicker
     - TextField itemDescriptionField
+    - ObservableList<Item> list
 
-    + clearAllButtonClicked()
-    + createNewItemButtonClicked()
-    + helpButtonClicked()
-    + openButtonClicked()
-    + saveAsButtonClicked()
-    + showAllButtonClicked()
-    + showAllButtonClicked()
-    + showOnlyCompletedButtonClicked()
-    + showOnlyIncompleteButtonClicked()
-    + DeleteButtonClicked()
+    # clearAllButtonClicked()
+    # createNewItemButtonClicked()
+    # helpButtonClicked()
+    # openButtonClicked()
+    # saveAsButtonClicked()
+    # showAllButtonClicked()
+    # showAllButtonClicked()
+    # showOnlyCompletedButtonClicked()
+    # showOnlyIncompleteButtonClicked()
+    # DeleteButtonClicked()
+    - refresh()
+    + initialize()
 }
 
 class Item {
@@ -37,6 +40,7 @@ class Item {
     + void setDueDate(String dueDate)
     + CheckBox isCompleted()
     + void setCompleted(CheckBox completed)
+
 }
 
 Application <|-- ListApp

@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -35,7 +34,7 @@ public class ListAppController implements Initializable {
     public TableColumn<Item, String> colDueDate;
     public TableColumn<Item, String> colDescription;
 
-    private ObservableList<Item> list = FXCollections.observableArrayList();
+    private final ObservableList<Item> list = FXCollections.observableArrayList();
     FilteredList<Item> filteredData = new FilteredList<>(list, p -> true);
 
     @FXML
@@ -68,11 +67,6 @@ public class ListAppController implements Initializable {
     }
 
     @FXML
-    void helpButtonClicked(ActionEvent event) {
-
-    }
-
-    @FXML
     void openButtonClicked(ActionEvent event) throws FileNotFoundException {
         File file = fileChooser.showOpenDialog(new Stage());
 
@@ -94,7 +88,7 @@ public class ListAppController implements Initializable {
         File file = fileChooser.showSaveDialog(new Stage());
         FileWriter writer = new FileWriter(file + ".txt");
         for (Item item : list) {
-            writer.write(Boolean.toString(item.isCompleted().isSelected()) + "," + item.getDueDate() + "," + item.getDescription()+"\n");
+            writer.write((item.isCompleted().isSelected()) + "," + item.getDueDate() + "," + item.getDescription()+"\n");
         }
         writer.close();
     }
@@ -109,12 +103,7 @@ public class ListAppController implements Initializable {
     void showOnlyCompletedButtonClicked(ActionEvent event) {
         filteredData.setPredicate(null);
 
-        filteredData.setPredicate(Item -> {
-            if (Item.isCompleted().isSelected()) {
-                return true;
-            }
-            return false;
-        });
+        filteredData.setPredicate(Item -> Item.isCompleted().isSelected());
 
         listOfItems.setItems(filteredData);
     }
@@ -123,12 +112,7 @@ public class ListAppController implements Initializable {
     void showOnlyIncompleteButtonClicked(ActionEvent event) {
         filteredData.setPredicate(null);
 
-        filteredData.setPredicate(Item -> {
-            if (!Item.isCompleted().isSelected()) {
-                return true;
-            }
-            return false;
-        });
+        filteredData.setPredicate(Item -> !Item.isCompleted().isSelected());
 
         listOfItems.setItems(filteredData);
     }
